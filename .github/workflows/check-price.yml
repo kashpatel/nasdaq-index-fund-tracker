@@ -8,7 +8,7 @@ on:
         - cron: '0 0 * * 1-5'
 
 jobs:
-    Check and Send:
+    Check_and_Send_Email:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Master Branch
