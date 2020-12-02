@@ -1,0 +1,28 @@
+name: On push to master
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    Check_and_Send_Email:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Master Branch
+              uses: actions/checkout@v1
+
+            - name: Setup node 12
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 12.x
+
+            - name: Install Dependencies
+              run: npm install
+
+            - name: Check Price and Send Email
+              run: node index.js
+              env:
+                  USERNAME: ${{ secrets.USERNAME }}
+                  PASS: ${{ secrets.PASS }}
+                  EMAILS: ${{ secrets.USERNAME }}

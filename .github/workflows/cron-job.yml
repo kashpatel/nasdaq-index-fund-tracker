@@ -1,11 +1,8 @@
 name: Nightly cron job
-on:
-    push:
-        branches:
-            - master
 
+on:
     schedule:
-        - cron: '0 0 * * 1-5'
+        - cron: '0 4 * * 1-5'
 
 jobs:
     Check_and_Send_Email:
