@@ -18,9 +18,9 @@ const url =
 
         await browser.close();
 
-        const uname = process.args[2];
-        const pass = process.args[3];
-        const to = process.args[4];
+        const uname = process.env.USERNAME;
+        const pass = process.env.PASS;
+        const to = process.env.EMAILS;
 
         const transporter = nodemailer.createTransport({
             secure: true,

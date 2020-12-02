@@ -24,5 +24,7 @@ jobs:
 
             - name: Check Price and Send Email
               run: node index.js
-              with:
-                  args: ${{ secrets.USERNAME }} ${{ secrets.PASS }} ${{ secrets.EMAILS }}
+              env:
+                  USERNAME: ${{ secrets.USERNAME }}
+                  PASS: ${{ secrets.PASS }}
+                  EMAILS: ${{ secrets.EMAILS }}
