@@ -23,4 +23,4 @@ jobs:
               run: npm install
 
             - name: Check Price and Send Email
-              run: npm run index.js ${{ secrets.USERNAME }} ${{ secrets.PASS }} ${{ secrets.EMAILS }}
+              run: node index.js ${{ secrets.USERNAME }} ${{ secrets.PASS }} ${{ secrets.EMAILS }}
