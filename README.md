@@ -1,10 +1,10 @@
 # Scotiabank Nasdaq Index Fund Price Tracker
 
-An overnight cron job run by Github Action's that emails me everyday price of Scotiabank Nasdaq Index mutual fund.
+An overnight cron job run by Github Action's that email me everyday price of Scotiabank Nasdaq Index mutual fund.
 
 ## Why?
 
-Matual fund prices are not real-time and only updated end of the day which makes harder to keep track.
+Matual fund prices are not real-time and only updated end of the day or overnight in some cases which makes harder to keep track of the price fluctuations.
 
 ## Tech Stack
 
