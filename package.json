@@ -1,0 +1,11 @@
+{
+    "name": "nasdaq-index-fund-tracker",
+    "version": "1.0.0",
+    "description": "\"Github action cron job to email me scotiabank nasdaq index fund everyday price\"",
+    "author": "Kashyap Patel",
+    "license": "MIT",
+    "dependencies": {
+        "nodemailer": "^6.4.16",
+        "puppeteer": "^5.5.0"
+    }
+}
