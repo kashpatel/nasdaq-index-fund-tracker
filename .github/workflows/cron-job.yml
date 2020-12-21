@@ -2,7 +2,7 @@ name: Nightly cron job
 
 on:
     schedule:
-        - cron: '0 4 * * 1-5'
+        - cron: '0 4 * * 2-5'
 
 jobs:
     Check_and_Send_Email:
