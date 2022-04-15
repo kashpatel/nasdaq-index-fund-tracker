@@ -1,29 +1,26 @@
 const puppeteer = require('puppeteer');
 const nodemailer = require('nodemailer');
 
-const priceSelector = '.bns--fund-price .c--title';
-const dateSelector = '.bns--fund-price .c--text';
+const tableSelector = '.fund-details-table';
 
 const url =
-    'https://www.scotiafunds.com/scotiafunds/en/fund-overviews/index-funds/scotia-nasdaq-index-fund.html';
+    'https://www.scotiafunds.com/en/home/all-funds/mutual-fund.en.rtcsnf.bns397.index-funds.scotia-nasdaq-index-fund.html';
 
 (async () => {
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            headless: false,
+            defaultViewport: { width: 1920, height: 1080 },
+        });
         const page = await browser.newPage();
-
         await page.goto(url);
-        await page.waitForSelector(priceSelector, { visible: true });
+        await page.waitForSelector(tableSelector, { visible: true });
 
-        const dateElement = await page.$(dateSelector);
-        const date = await page.evaluate((el) => el.textContent, dateElement);
+        const tableElement = await page.$(tableSelector);
+        await tableElement.screenshot({ path: 'table.jpeg' });
 
-        const priceElement = await page.$(priceSelector);
-        const price = await page.evaluate((el) => el.textContent, priceElement);
-
+        await page.close();
         await browser.close();
-
-        const body = `${date} is ${price}`;
 
         const uname = process.env.USERNAME;
         const pass = process.env.PASS;
@@ -39,7 +36,11 @@ const url =
             from: uname,
             to: to,
             subject: 'Scotia Nasdaq Index Fund Price',
-            text: body,
+            attachments: [
+                {
+                    path: 'table.jpeg',
+                },
+            ],
         });
     } catch (e) {
         console.error('Error: ', e);
