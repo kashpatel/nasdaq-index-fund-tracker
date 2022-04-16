@@ -9,7 +9,6 @@ const url =
 (async () => {
     try {
         const browser = await puppeteer.launch({
-            headless: false,
             defaultViewport: { width: 1920, height: 1080 },
         });
         const page = await browser.newPage();
